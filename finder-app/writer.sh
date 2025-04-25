@@ -15,6 +15,11 @@ fi
 writefile=$1
 writestr=$2
 
-$(touch writefile)
-$(echo "$writestr" > $writefile)
+dir_path=$(dirname "${writefile}")
+file_name=$(basename "${writefile}")
+
+mkdir -p ${dir_path}
+cd ${dir_path} 
+touch ${file_name}
+echo "${writestr}" > ${writefile}
 
